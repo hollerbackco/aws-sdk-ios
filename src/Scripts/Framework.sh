@@ -88,16 +88,7 @@ else
 		
 		# You don't need to delete DynamoDB header because old DynamoDB client doesn't have one.
 		rm $FRAMEWORK_DIR/Headers/AWSRuntime.h
-		rm $FRAMEWORK_DIR/Headers/AutoScaling/AWSAutoScaling.h
-		rm $FRAMEWORK_DIR/Headers/CloudWatch/AWSCloudWatch.h
-		rm $FRAMEWORK_DIR/Headers/EC2/AWSEC2.h
-		rm $FRAMEWORK_DIR/Headers/ElasticLoadBalancing/AWSElasticLoadBalancing.h
 		rm $FRAMEWORK_DIR/Headers/S3/AWSS3.h
-		rm $FRAMEWORK_DIR/Headers/SES/AWSSES.h
-		rm $FRAMEWORK_DIR/Headers/SimpleDB/AWSSimpleDB.h
-		rm $FRAMEWORK_DIR/Headers/SNS/AWSSNS.h
-		rm $FRAMEWORK_DIR/Headers/SQS/AWSSQS.h
-		rm $FRAMEWORK_DIR/Headers/STS/AWSSecurityTokenService.h
 		
 	elif [ "${PROJECT}" == "Runtime" ];
 	then
