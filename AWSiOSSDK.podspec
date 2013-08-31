@@ -1,0 +1,32 @@
+
+Pod::Spec.new do |s|
+  s.name         =  'AWSiOSSDK'
+  s.version      =  '1.6.1.1'
+  s.license      =  'Apache License, Version 2.0'
+  s.summary      =  'Amazon Web Services SDK for iOS.'
+  s.homepage     =  'http://aws.amazon.com/sdkforios'
+  s.author       =  { 'Amazon Web Services' => 'amazonwebservices' }
+  s.source       =  { :git => 'https://github.com/hollerbackco/aws-sdk-ios.git', :tag => '1.6.1.1' }
+  s.description  =  'The AWS SDK for iOS provides a library, code samples, and documentation for developers to build connected mobile applications using AWS.'
+  s.platform     =  :ios
+
+  s.header_mappings_dir = 'src/include'
+
+  s.prefix_header_contents = <<-PCH
+#ifdef __OBJC__
+#import "AmazonLogger.h"
+#import "AmazonErrorHandler.h"
+#endif
+  PCH
+
+  s.subspec 'Runtime' do |ss|
+    ss.source_files = "src/Amazon.Runtime/**/*.m", "src/include", "src/ThirdParty/**/*.m", "src/ThirdParty/**/*.h"
+  end
+
+  %w[ S3 ].each do |name|
+    s.subspec name do |ss|
+      ss.source_files = "src/Amazon.#{name}/**/*.m", "src/include/#{name}"
+      ss.dependency 'AWSiOSSDK/Runtime'
+    end
+  end
+end
